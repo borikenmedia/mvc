@@ -11,7 +11,7 @@ REQUIREMENTS
 - Recommended 5y or more of xCode (Extremme Programming) practice (no-fractal) or design (no-analog-eng)
 
 DESCRIPTION
-The implemented web centric software refers to the implementation of Pearl Programming Language (Hypertest Pre-process or PHP) from a primitive development platform such as Mobile Compute Micro Compute and Personal Compute with an creative approuch which is recomended as it would access privative realms and public domains where available.
+The implemented web centric software refers to the implementation of Pearl Programming Language (Hypertext Pre-processor or PHP) from a primitive development platform such as Mobile Compute Micro Compute and Personal Compute with an creative approuch which is recomended as it would access privative realms and public domains where available.
 
 The PHP Minthread MVC (.2.1) is implemented or developed in Hypertext Pre-process widely known as The Php Programming Language
 
