@@ -1,7 +1,7 @@
 # mvc
 PHP7 Model View Controller Design Pattern Web Development
 
-Hereby thus a web development implementation of the Model View Controller Patter Design (CGI-Implemented or Prochot) for web environment and web production such as e-commerce or social media (Profile).
+Hereby thus a web development implementation of the Model View Controller Pattern Design (CGI-Implemented or Prochot) for web environment and web production such as e-commerce or social media (Profile).
 
 The Implemented Model View Controller utilized and scripted is an implementation for a procedure and Agile Methodology capable system.
 
