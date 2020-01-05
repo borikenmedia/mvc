@@ -8,6 +8,6 @@ use \libr\basecontroller,
 
 /* Minthread CMS v2 Release Under LGPL3 By dyewilliam */
 
-class admin extends basecontroller implements admin{}
+class crud extends basecontroller implements admin{}
 
 ?>
