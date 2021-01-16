@@ -6,7 +6,7 @@ RewriteEngine ON
 
 AddType application/x-httpd-php .php5 .phtml .tpl
 
-RwriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-s
 RewriteCond %{REQUEST_FILENAME} !-l
