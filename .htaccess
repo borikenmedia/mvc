@@ -1,1 +1,19 @@
 DirectoryIndex index.php
+
+Options -Multiviews
+
+RewriteEngine ON
+
+AddType application/x-httpd-php .php5 .phtml .tpl
+
+RwriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-s
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.*)$ index.php?app=$1 [L,QSA]
+
+ErrorDocument 401 error/auth.php
+ErrorDocument 403 error/forb.php
+ErrorDocument 404 error/innot.php
+ErrorDocument 500 error/server.php
