@@ -7,7 +7,7 @@ header("Content-type: text/html; Charset: UTF-8; Pragma: no-cache;");
 
 /* Mtd CMS v2 Release Under LGPL3 By dyewilliam (nick) */
 
-define("PATH", dirname(__DIR__));
+define("PATH", __DIR__);
 define("APPATH", PATH."/module/");
 define("URLREQ", "http://".$_SERVER["SERVER_NAME"]."/alias/");
 define("TIME", date("D M d, Y h:ia"));
