@@ -22,7 +22,7 @@ class database{
       $this->_dbuser = $config["dbuser"];
       $this->_dbpass = $config["dbpass"];
       $this->_dbname = $config["dbname"];
-      $this->_dbconnect = new \PDO("mysql:host={$this_>_dbhost}; dbname={$this->_dbname};".$this->_dbuser, $this->_dbpass);
+      $this->_dbconnect = new \PDO("mysql:host=".$this_>_dbhost."; dbname=".$this->_dbname, $this->_dbuser, $this->_dbpass);
       $this->_dbconnect->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
       $this->_dbconnect->exec("Set Character Set utf8");
     }catch(\PDOException $e){
@@ -30,7 +30,7 @@ class database{
     }
   }
   
-  public function prepare(string $sql):bool{
+  public function prepare(string $sql):object{
     return($this->_dbconnect->prepare($sql));
   }
   
