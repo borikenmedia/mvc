@@ -27,15 +27,18 @@ final class routes{
     }
     $this->_param = (is_array($url))? array_values($url): array();
   }
+  /* Create a general behave for the search and initialize object::class $properties */
   
   public function geturl():array{
     $this->url = (isset($_GET["app"]))? explode("/",filter_var(rtrim($_GET["app"], "/"), FILTER_SANITIZE_URL)): array("pages", "home");
   }
+  /* Check and filter the requested url input */
   
   public static function getconfig():array{
     $this->path = APPATH."configs/mtd.db.ini";
     return((array)(file_exists($this->path))? parse_ini_file($this->path): array("error", "config"=>"notfound"));
   }
+  /* Check and filter the config::database */
   
   public function render(){
     return((array)call_user_func_array(array($this->_method,$this->_action), $this->_param));
