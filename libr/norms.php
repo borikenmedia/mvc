@@ -22,9 +22,10 @@ class norms{
     $this->http = $_SERVER["HTTP_USER_AGENT"];
     $this->date = TIME;
     $this->session_id = $this->session_id();
+    $this->setLogs();
   }
   
-  public function setLogs():bool{
+  private function setLogs():bool{
     $this->db = db::instance();
     try{
       $sql = "Insert Into database_table_logs Values(null, :addr, :uri, :http, :date, :ssid);";
