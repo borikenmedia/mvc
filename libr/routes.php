@@ -1,1 +1,50 @@
+<?php
+namespace libr;
+defined("Access denied") or exit("<n style=\"font: normal 1.65em Calibri;\">Access denied</n>");
 
+final class routes{
+
+  private $_method;
+  private $_action;
+  private $_param;
+  const NAMESPACE_CONTROLLER = "\modules\controllers\\";
+  const CONTROLLERS_PATH = APPATH."modules/controllers/";
+  
+  public function __construct(){
+    $url = $this->url;
+    $this->_method = routes::CONTROLLERS_PATH.$url[0].".class.php";
+    if(file_exists($this->_method)){
+      $class = routes::NAMESPACE_CONTROLLER.$url[0];
+      unset($url[0]);
+    }else{
+      $class = routes::NAMESPACE_CONTROLLER."error";
+      $action = "notfound";
+    }
+    $this->_method = new $class;
+    if(is_object($this->_method) && method_exists($this->_method, $url[1])){
+      $this->_action = $url[1];
+      unset($url[1]);
+    }
+    $this->_param = (is_array($url))? array_values($url): array();
+  }
+  
+  public function geturl():array{
+    $this->url = (isset($_GET["app"]))? explode("/",filter_var(rtrim($_GET["app"], "/"), FILTER_SANITIZE_URL)): array("pages", "home");
+  }
+  
+  public static function getconfig():array{
+    $this->path = APPATH."configs/mtd.db.ini";
+    return((array)(file_exists($this->path))? parse_ini_file($this->path): array("error", "config"=>"notfound"));
+  }
+  
+  public function render(){
+    return((array)call_user_func_array(array($this->_method,$this->_action), $this->_param));
+  }
+  
+  public static function getmethod(){}
+  public static function getaction(){}
+  public static function getparam(){}
+
+}
+
+?>
