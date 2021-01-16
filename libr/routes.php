@@ -7,6 +7,7 @@ final class routes{
   private $_method;
   private $_action;
   private $_param;
+  public static $path;
   const NAMESPACE_CONTROLLER = "\modules\controllers\\";
   const CONTROLLERS_PATH = APPATH."modules/controllers/";
   
@@ -35,8 +36,8 @@ final class routes{
   /* Check and filter the requested url input */
   
   public static function getconfig():array{
-    $this->path = APPATH."configs/mtd.db.ini";
-    return((array)(file_exists($this->path))? parse_ini_file($this->path): array("error", "config"=>"notfound"));
+    routes::$path = APPATH."configs/mtd.db.ini";
+    return((array)(file_exists(routes::$path))? parse_ini_file(routes::$path): array("error", "config"=>"notfound"));
   }
   /* Check and filter the config::database */
   
