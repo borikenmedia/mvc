@@ -35,7 +35,7 @@ class database{
   }
   
   public static function instance(){
-    if(!atabase::$_dbinstance){
+    if(!database::$_dbinstance){
       $class = __CLASS__;
       database::$_dbinstance = new $class;
     }
