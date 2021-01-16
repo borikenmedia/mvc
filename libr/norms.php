@@ -19,6 +19,7 @@ class norms{
   public function __construct(){
     $this->addr = $_SERVER["REMOTE_ADDR"];
     $this->uri = $_SERVER["REQUEST_URI"];
+    $this->http = $_SERVER["HTTP_USER_AGENT"];
     $this->date = TIME;
     $this->session_id = $this->session_id();
   }
