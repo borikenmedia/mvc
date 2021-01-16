@@ -36,7 +36,7 @@ class norms{
         "ssid"=>$this->session_id);
       if($qry->execute($items) != false){
         $fp = @fopen(PATH."/temporal/logs/log.{$this->session_id}.data.txt", "w+");
-        fwrite($fp, "Addr:{$this->addr}\nREQUEST:{$this->uri}\nUSER_AGENT:{$this->http}\nDATE:{$this->date}\nSESSION:{$this->session_id}\n;
+        fwrite($fp, "Addr:{$this->addr}\nREQUEST:{$this->uri}\nUSER_AGENT:{$this->http}\nDATE:{$this->date}\nSESSION:{$this->session_id}\n");
         fclose($fp);
       }
     }catch(\PDOException $e){
