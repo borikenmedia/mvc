@@ -4,12 +4,12 @@ defined("Access denied") or exit("<n style=\"font: normal 1.65em Calibri;\">Acce
 
 final class routes{
 
-  private $_method;
-  private $_action;
-  private $_param;
+  private $_method = "pages";
+  private $_action = "home";
+  private $_param = array();
   public static $path;
   const NAMESPACE_CONTROLLER = "\modules\controllers\\";
-  const CONTROLLERS_PATH = APPATH."modules/controllers/";
+  const CONTROLLERS_PATH = APPATH."controllers/";
   
   public function __construct(){
     $url = $this->url;
@@ -30,8 +30,9 @@ final class routes{
   }
   /* Create a general behave for the search and initialize object::class $properties */
   
-  public function geturl():array{
+  private function geturl():array{
     $this->url = (isset($_GET["app"]))? explode("/",filter_var(rtrim($_GET["app"], "/"), FILTER_SANITIZE_URL)): array("pages", "home");
+    return((array)$this->url);
   }
   /* Check and filter the requested url input */
   
