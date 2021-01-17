@@ -71,7 +71,7 @@ class norms{
   }
   
   public function message(string $data):string{
-    $value = "<script type=\"text/javascript\">alert('{$data}';</script>";
+    $value = "<script type=\"text/javascript\">alert('{$data}');</script>";
     return((string)$value);
   }
   
