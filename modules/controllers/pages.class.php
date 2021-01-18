@@ -18,6 +18,7 @@ final class pages{
     $values = array(
     "title" => "Boriken Media Subs",
     "urlreq" => URLREQ,
+    "logo" => "<h1>Boriken Media Subs</h1>",
     "sitemap" => "Welcome_TO_THE_HOME_PAGE",
     "sidebar" => "SIDEBAR_MENU",
     "content" => "CONTENT_BODY");
