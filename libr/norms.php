@@ -22,10 +22,9 @@ class norms{
     $this->http = $_SERVER["HTTP_USER_AGENT"];
     $this->date = TIME;
     $this->session_id = $this->session_id();
-    $this->setLogs();
   }
   
-  private function setLogs():bool{
+  public function setLogs():bool{
     $this->db = db::instance();
     try{
       $sql = "Insert Into database_table_logs Values(null, :addr, :uri, :http, :date, :ssid);";
@@ -47,7 +46,7 @@ class norms{
     return((bool)true);
   }
   
-  public function setCcahe():bool{
+  public function setCache():bool{
     $this->db = db::instance();
     try{
       $sql = "Insert Into database_table_cache Values(null, :addr, :uri, :http, :cast, :date, :ssid);";
@@ -58,10 +57,10 @@ class norms{
         "http"=>$this->http,
         "cast"=>serialize($this->state),
         "date"=>$this->date,
-        "ssid"=>$this->ssid);
+        "ssid"=>$this->session_id);
       if($qry->execute($items) != false){
         $fp = @fopen(PATH."/temporal/cache/cache.{$this->session_id}.data.txt", "w+");
-        fwrite($fp, "ADDR:{$this->addr}\nREQUEST:{$this->uri}\nUSER_AGENT:{$this->http}\nCHANGE:{$items["cast"]}\nDATE:{$this->date}\nSSID:{$this->ssid}\n");
+        fwrite($fp, "ADDR:{$this->addr}\nREQUEST:{$this->uri}\nUSER_AGENT:{$this->http}\nCHANGE:{$items["cast"]}\nDATE:{$this->date}\nSSID:{$this->session_id}\n");
         fclose($fp);
       }
     }catch(\PDOException $e){
