@@ -14,7 +14,7 @@ final class routes{
   const CONTROLLERS_PATH = APPATH."controllers/";
   
   public function __construct(){
-    $url = $this->url;
+    $url = $this->geturl();
     $this->_method = routes::CONTROLLERS_PATH.$url[0].".class.php";
     if(file_exists($this->_method)){
       $class = routes::NAMESPACE_CONTROLLER.$url[0];
