@@ -43,7 +43,7 @@ class database{
   }
   
   public function __clone(){
-    trigger_error("DATABASE_ERROR: The requested method_action::cloning is not available or diabled", E_USER_ERROR);
+    trigger_error("DATABASE_ERROR: The requested method_action::cloning is not available or disabled", E_USER_ERROR);
   }
   
 }
