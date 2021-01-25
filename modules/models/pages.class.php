@@ -1,13 +1,26 @@
 <?php
 namespace modules\models;
-defined("APPPATH") or exit("Access denied");
+defined("APPATH") or exit("<n style=\"font: normal 1em Calibri;\">Access denied</n>");
 
-/* Minthread CMS v2 Release Under LGPL3 By dyewilliam */
+/* Mtd CMS v2 Release Under LGPL3 By dyewilliam (nickhere) */
 
-use libr\basemodel,
-    libr\basecontroller,
-    modules\interfaces\pages as admin;
+use libr\database as db, libr\norms as controller, modules\interfaces\pagescrud as init;
     
-class pages extends basecontroller implements admin{}
+class pages extends controller implements init{
+
+    private $db;
+    private $path;
+    
+    public function __construct(){parent::__construct();}
+    
+    public function createpage(){}
+    
+    public function readpage(){}
+    
+    public function updatepage(){}
+    
+    public function droppage(){}
+
+}
 
 ?>
