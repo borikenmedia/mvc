@@ -69,6 +69,18 @@ class norms{
     return((bool)true);
   }
   
+  public function getforms($form):string{
+    $this->path = APPATH."assets/forms/{$form}.form.php";
+    if(file_exists($this->path)){
+      $fp = @fopen($this->path, "r");
+      $this->path = fread($fp, filesize($this->path));
+      fclose($fp);
+    }else{
+      throw new \Exception("Error: The requested form::{$form} is not available", 1);
+    }
+    return((string)$this->path);
+  }
+  
   public function message(string $data):string{
     $value = "<script type=\"text/javascript\">alert('{$data}');</script>";
     return((string)$value);
