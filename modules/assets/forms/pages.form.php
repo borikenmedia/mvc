@@ -1,5 +1,5 @@
 <!--Here_lies_the_pages_forms_file_it_witholds_as_many_as Needed//-->
-<form method="post" action="#" name="neewsletter">
+<form method="post" action="#" name="newsletter">
   Username or email<br/>
   <input type="text" name="uname" value="user" /><br/>
   Category<br/>
