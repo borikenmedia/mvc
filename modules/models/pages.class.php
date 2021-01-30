@@ -9,7 +9,7 @@ use libr\database as db, libr\norms as controller, modules\interfaces\pagescrud 
 class pages extends controller implements init{
 
     private $db;
-    private $path;
+    public $path;
     
     public function __construct(){parent::__construct();}
     
