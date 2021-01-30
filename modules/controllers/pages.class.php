@@ -36,7 +36,7 @@ final class pages{
     $this->db = new db;
     $this->tpl = new tpl;
     $values = array(
-    "title" = "Boriken Media Subs",
+    "title" => "Boriken Media Subs",
     "urlreq" => URLREQ,
     "logo" => "<h1>Boriken Media Subs</h1>",
     "sitemap" => "Welcome &minus;&gt; Cpanel",
