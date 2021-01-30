@@ -6,6 +6,9 @@ RewriteEngine ON
 
 AddType application/x-httpd-php .php5 .phtml .tpl
 
+php_flag display_startup_errors ON
+php_flag display_errors ON
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-s
