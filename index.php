@@ -1,7 +1,6 @@
 <?php
 session_start();
-ini_set("display_errors", 1);
-ini_set("error_reporting", E_ALL);
+error_reporting(E_ERROR|E_WARNING|E_PARSE|E_NOTICE);
 date_default_timezone_set("America/Puerto_Rico");
 header("Content-type: text/html; Charset: UTF-8; Pragma: no-cache;");
 
