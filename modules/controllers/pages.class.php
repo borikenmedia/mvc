@@ -26,11 +26,56 @@ final class pages{
     echo($render);
   }
   
-  public function about(){}
+  public function about(){
+    $this->db = new db;
+    $this->tpl = new tpl;
+    $values = array(
+      "title" => "Boriken Media Subs",
+      "urlreq" => URLREQ,
+      "logo" => "<h1>Boriken Media Subs</h1>",
+      "sitemap" => "About",
+      "sidebar" => "SIDEBAR_MENU",
+      "content" => "CONTENT_BODY");
+    $render = $this->tpl->parsetpl($values)->output();
+    $this->db->setLogs();
+    $this->db->state = $render;
+    $this->db->setCache();
+    echo($render);
+  }
   
-  public function profile(){}
+  public function profile(){
+    $this->db = new db;
+    $this->tpl = new tpl;
+    $values = array(
+      "title" => "Boriken Media Subs",
+      "urlreq" => URLREQ,
+      "logo" => "<h1>Boriken Media Subs</h1>",
+      "sitemap" => "PROFILE",
+      "sidebar" => "SIDEBAR_MENU",
+      "content" => "CONTENT_BODY");
+    $render = $this->tpl->parsetpl($values)->output();
+    $this->db->setLogs();
+    $this->db->state = $render;
+    $this->db->setCache();
+    echo($render);
+  }
   
-  public function contact(){}
+  public function contact(){
+    $this->db = new db;
+    $this->tpl = new tpl;
+    $values = array(
+      "title" => "Boriken Media Subs",
+      "urlreq" => URLREQ,
+      "logo" => "<h1>Boriken Media Subs</h1>",
+      "sitemap" => "CONTACT",
+      "sidebar" => "SIDEBAR_MENU",
+      "content" => "CONTENT_BODY");
+    $render = $this->tpl->parsetpl($values)->output();
+    $this->db->setLogs();
+    $this->db->state = $render;
+    $this->db->setCache();
+    echo($render);
+  }
   
   public function cpanel(){
     $this->db = new db;
