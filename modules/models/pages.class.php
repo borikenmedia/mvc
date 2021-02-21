@@ -30,8 +30,8 @@ class pages extends controller implements init{
             if($query->execute($values) != false){
                 return((bool)true);
             }
-        }catch(\PDOException $m){
-            throw new \Exception("Error: The requested database near_createpage is not available Message->".$m->getMessage(), 1);
+        }catch(\PDOException $e){
+            throw new \Exception("Error: The requested database near_createpage is not available Message->".$e->getMessage(), 1);
         }
     }
     
@@ -45,8 +45,8 @@ class pages extends controller implements init{
                 $fetch = $query->fetch(\PDO::FETCH_ASSOC);
                 return((array)$fetch);
             }
-        }catch(\PDOException $m){
-            throw new \Exception("Error: The requested database near_readpage is not available Message->".$m->getMessage(), 1);
+        }catch(\PDOException $e){
+            throw new \Exception("Error: The requested database near_readpage is not available Message->".$e->getMessage(), 1);
         }
     }
     
@@ -59,8 +59,8 @@ class pages extends controller implements init{
             if($query->execute($values) != false){
                 return((bool)true);
             }
-        }catch(\PDOException $m){
-            throw new \Exception("Error: The requested database near__updatepage is not available Message->".$m->getMessage(), 1);
+        }catch(\PDOException $e){
+            throw new \Exception("Error: The requested database near__updatepage is not available Message->".$e->getMessage(), 1);
         }
     }
     
@@ -72,8 +72,8 @@ class pages extends controller implements init{
             if($query->execute(array("item"=>$item)) != false){
                 return((bool)true);
             }
-        }catch(\PDOException $m){
-            throw new \Exception("Error: The requested database near_droppage is not available Message->".$m->getMessage(), 1); 
+        }catch(\PDOException $e){
+            throw new \Exception("Error: The requested database near_droppage is not available Message->".$e->getMessage(), 1); 
         }
     }
 
