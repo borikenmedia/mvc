@@ -67,7 +67,7 @@ class pages extends controller implements init{
     public function droppage($item){
         $this->db = db::instance();
         try{
-            $sql = "Drop From database_table_pages Where req_id=:item;";
+            $sql = "Drop database_table_pages Where req_id=:item;";
             $query = $this->db->prepare($sql);
             if($query->execute(array("item"=>$item)) != false){
                 return((bool)true);
