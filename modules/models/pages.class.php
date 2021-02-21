@@ -16,7 +16,7 @@ class pages extends controller implements init{
     public function createpage(){
         $this->db = db::instance();
         try{
-            $sql = "Inser Into website_db_table Values(null, :uname, :contact, :pagename, :pagetitle, :pagecontent, :pagekeys, :date, :ssid);";
+            $sql = "Inser Into database_table_pages Values(null, :uname, :contact, :pagename, :pagetitle, :pagecontent, :pagekeys, :date, :ssid);";
             $query = $this->db->prepare($sql);
             $values = array(
                 "uname"=>$this->shtml($_POST["user"]),
@@ -38,7 +38,7 @@ class pages extends controller implements init{
     public function readpage(){
         $this->db = db::instance();
         try{
-            $sql = "Select req_id, req_uname, req_ucontact, :req_pagename, :req_pagetitle, :req_pagecontent, :req_pagekeys, :req_date, :req_ssid From website_db_table Where req_id=:item;";
+            $sql = "Select req_id, req_uname, req_ucontact, :req_pagename, :req_pagetitle, :req_pagecontent, :req_pagekeys, :req_date, :req_ssid From database_table_pages Where req_id=:item;";
             $query = $this->db->prepare($sql);
             $values = array("item"=>(!empty($_GET["post"]) && is_int($_GET["post"]))? $this->shtml($_GET["post"]): 1);
             if($query->execute($values) != false){
@@ -53,7 +53,7 @@ class pages extends controller implements init{
     public function updatepage($column,$value,$item){
         $this->db = db::instance();
         try{
-            $sql = "Update website_db_table Set {$column}=:value Where req_id=:item;";
+            $sql = "Update database_table_pages Set {$column}=:value Where req_id=:item;";
             $query = $this->db->prepare($sql);
             $values = array("value"=>$value,"item"=>$item);
             if($query->execute($values) != false){
@@ -67,7 +67,7 @@ class pages extends controller implements init{
     public function droppage($item){
         $this->db = db::instance();
         try{
-            $sql = "Drop From website_db_table Where req_id=:item;";
+            $sql = "Drop From database_table_pages Where req_id=:item;";
             $query = $this->db->prepare($sql);
             if($query->execute(array("item"=>$item)) != false){
                 return((bool)true);
