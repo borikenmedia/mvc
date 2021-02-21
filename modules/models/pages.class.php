@@ -13,13 +13,69 @@ class pages extends controller implements init{
     
     public function __construct(){parent::__construct();}
     
-    public function createpage(){}
+    public function createpage(){
+        $this->db = db::instance();
+        try{
+            $sql = "Inser Into website_db_table Values(null, :uname, :contact, :pagename, :pagetitle, :pagecontent, :pagekeys, :date, :ssid);";
+            $query = $this->db->prepare($sql);
+            $values = array(
+                "uname"=>$this->shtml($_POST["user"]),
+                "contact"=>filter_var($_POST["contact"],FILTER_SANITIZE_EMAIL),
+                "pagename"=>$this->shtml($_POST["pagename"]),
+                "pagetitle"=>$this->shtml($_POST["pagetitle"]),
+                "pagecontent"=>$this->shtml($_POST["pagecontent"]),
+                "pagekeys"=>$this->shtml($_POST["pagekeys"]),
+                "date"=>TIME,
+                "ssid"=>$this->ssid);
+            if($query->execute($values) != false){
+                return((bool)true);
+            }
+        }catch(\PDOException $m){
+            throw new \Exception("Error: The requested database near_createpage is not available Message->".$m->getMessage(), 1);
+        }
+    }
     
-    public function readpage(){}
+    public function readpage(){
+        $this->db = db::instance();
+        try{
+            $sql = "Select req_id, req_uname, req_ucontact, :req_pagename, :req_pagetitle, :req_pagecontent, :req_pagekeys, :req_date, :req_ssid From website_db_table Where req_id=:item;";
+            $query = $this->db->prepare($sql);
+            $values = array("item"=>(!empty($_GET["post"]) && is_int($_GET["post"]))? $this->shtml($_GET["post"]): 1);
+            if($query->execute($values) != false){
+                $fetch = $query->fetch(\PDO::FETCH_ASSOC);
+                return((array)$fetch);
+            }
+        }catch(\PDOException $m){
+            throw new \Exception("Error: The requested database near_readpage is not available Message->".$m->getMessage(), 1);
+        }
+    }
     
-    public function updatepage(){}
+    public function updatepage($column,$value,$item){
+        $this->db = db::instance();
+        try{
+            $sql = "Update website_db_table Set {$column}=:value Where req_id=:item;";
+            $query = $this->db->prepare($sql);
+            $values = array("value"=>$value,"item"=>$item);
+            if($query->execute($values) != false){
+                return((bool)true);
+            }
+        }catch(\PDOException $m){
+            throw new \Exception("Error: The requested database near__updatepage is not available Message->".$m->getMessage(), 1);
+        }
+    }
     
-    public function droppage(){}
+    public function droppage($item){
+        $this->db = db::instance();
+        try{
+            $sql = "Drop From website_db_table Where req_id=:item;";
+            $query = $this->db->prepare($sql);
+            if($query->execute(array("item"=>$item)) != false){
+                return((bool)true);
+            }
+        }catch(\PDOException $m){
+            throw new \Exception("Error: The requested database near_droppage is not available Message->".$m->getMessage(), 1); 
+        }
+    }
 
 }
 
