@@ -16,7 +16,7 @@ class pages extends controller implements init{
     public function createpage(){
         $this->db = db::instance();
         try{
-            $sql = "Inser Into database_table_pages Values(null, :uname, :contact, :pagename, :pagetitle, :pagecontent, :pagekeys, :date, :ssid);";
+            $sql = "Insert Into database_table_pages Values(null, :uname, :contact, :pagename, :pagetitle, :pagecontent, :pagekeys, :date, :ssid);";
             $query = $this->db->prepare($sql);
             $values = array(
                 "uname"=>$this->shtml($_POST["user"]),
