@@ -7,8 +7,8 @@ defined("APPATH") or exit("<n style=\"font: normal 1.65em Calibri;\">Access deni
 interface pagescrud{
   public function createpage();
   public function readpage();
-  public function updatepage();
-  public function droppage();
+  public function updatepage($column,$value,$item);
+  public function droppage($item);
 }
 
 ?>
