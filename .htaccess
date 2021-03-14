@@ -14,7 +14,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-s
 RewriteCond %{REQUEST_FILENAME} !-l
 
-RewriteRule ^(.*)$ index.php?app=$1 [L,QSA]
+RewriteRule ^(.+[*/])$ index.php?app=$1 [L,QSA]
 
 ErrorDocument 401 error/auth.php
 ErrorDocument 403 error/forb.php
